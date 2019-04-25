@@ -30,7 +30,7 @@ link_directories(${OpenCV_LIB_DIR})
 # include_directories( ${G2O_DIR} )
 # link_directories( ${G2O_LIB} )
 
-set(G2O_ROOT /home/hzhang8/work/3rdlib/g2o/install/usr/local)
+set(G2O_ROOT /home/davidz/work/3rdlib/g2o/install/usr/local)
 include_directories(${G2O_ROOT}/include /usr/include/suitesparse) 
 link_directories(${G2O_ROOT}/lib /usr/lib/i386-linux-gnu)
 set(G2O_LIBS g2o_types_slam3d g2o_types_slam2d g2o_solver_csparse g2o_stuff g2o_types_sba g2o_core g2o_cli g2o_csparse_extension  cxsparse )

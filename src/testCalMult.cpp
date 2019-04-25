@@ -13,6 +13,7 @@
 // for g2o
 #include <g2o/core/sparse_optimizer.h>
 #include <g2o/core/block_solver.h>
+#include <g2o/core/linear_solver.h>
 #include <g2o/core/robust_kernel.h>
 #include <g2o/core/robust_kernel_impl.h>
 #include <g2o/core/optimization_algorithm_levenberg.h>
@@ -142,7 +143,10 @@ int main(int argc, char const **argv)
 //=========================================================================================================================
   g2o::SparseOptimizer optimizer;
     
-  typedef g2o::BlockSolver_6_3 SlamBlockSolver; 
+  // typedef g2o::BlockSolver_6_3 SlamBlockSolver; 
+  typedef g2o::BlockSolver< g2o::BlockSolverTraits<-1, -1> >  SlamBlockSolver;
+  // typedef LinearSolverCSparse<SclamBlockSolver::PoseMatrixType> SclamLinearSolver;
+  // typedef g2o::LinearSolverCSparse::BlockSolverX SlamBlockSolver; 
   typedef g2o::LinearSolverEigen< SlamBlockSolver::PoseMatrixType > SlamLinearSolver; 
   std::unique_ptr<SlamLinearSolver> linearSolver ( new SlamLinearSolver());
   linearSolver->setBlockOrdering( false );
